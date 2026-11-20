@@ -4,15 +4,141 @@
     </head>
 
     <body>
-        <p><h1><b>Spencer Stafford Douglas Thompson</b></h1>
-
-        <p><b>Digital Artist, Designer, Videographer.</b></p>
-
-        <p><img src="profilepicture.gif" width="256" height="341"></p>
-        
-        <P></P>
+    <table>
+    <tr></th>
+        <th width="256" valign="top" align="left"><A href="mailto:titanwarepro@gmail.com">titanwarepro@gmail.com</a><br>778-957-3318
+        <br>Powell River, B.C.<br>Canada</th>
 
 
+        <th width="100%" colspan="2"><p><h1><b>Spencer Stafford Douglas Thompson</b></h1>
+<p><b>Digital Artist, Computer Programmer, Designer, Animator</b></p></th>
+        <th></th>
+      </tr>
+          <td><img class="img" src="profilepicture.gif" width="256" height="341">
+
+ <meta charset="UTF-8">
+  <style>
+    body { font-family: sans-serif; background: #f4f4f9; padding: 0px; }
+    .shoutbox { width: 256px; background: #fff; border: 2px solid #000; border-radius: 1px; overflow: hidden; }
+    .shoutbox-header { background: #333; color: #fff; padding: 0px;  }
+    .messages { height: 150px; overflow-y: auto; padding: 0px; display: flex; flex-direction: column; gap: 1px; }
+    .message { background: #eef2f5; padding: 1px; border-radius: 1px; font-size: 10px; word-wrap: break-word; }
+    .message strong { color: #0056b3; }
+    .message span.time { font-size: 11px; color: #777; float: right; }
+    .shout-form { display: flex; flex-direction: column; gap: 1px; padding: 1px; border-top: 1px solid #ccc; background: #fafafa; }
+    .shout-form input, .shout-form button { padding: 1px; border: 1px solid #ccc; border-radius: 1px; }
+    .shout-form button { background: black; color: white; border: none; cursor: pointer; }
+    .shout-form button:hover { background: white; color: black; }
+  </style>
+</head>
+<body>
+
+<div class="shoutbox">
+  <div class="shoutbox-header">Leave A Message</div>
+  <div class="messages" id="messages"></div>
+  <form class="shout-form" id="shoutForm">
+    <input type="text" id="username" placeholder="Your name" required maxlength="20">
+    <input type="text" id="messageInput" placeholder="Write a shout..." required maxlength="200">
+    <button type="submit">Shout</button>
+  </form>
+</div>
+
+<script>
+  const form = document.getElementById('shoutForm');
+  const messagesContainer = document.getElementById('messages');
+  const usernameInput = document.getElementById('username');
+  const messageInput = document.getElementById('messageInput');
+
+  // Load saved messages from localStorage or start empty
+  let shouts = JSON.parse(localStorage.getItem('shouts')) || [];
+
+  // Safely escape HTML to prevent Cross-Site Scripting (XSS)
+  function escapeHTML(str) {
+    const div = document.createElement('div');
+    div.textContent = str;
+    return div.innerHTML;
+  }
+
+  // Render all messages to the DOM
+  function renderShouts() {
+    messagesContainer.innerHTML = shouts.map(shout => `
+      <div class="message">
+        <span class="time">${shout.time}</span>
+        <strong>${escapeHTML(shout.user)}:</strong> ${escapeHTML(shout.text)}
+      </div>
+    `).join('');
+    // Auto-scroll to the newest message
+    messagesContainer.scrollTop = messagesContainer.scrollHeight;
+  }
+
+  // Handle form submission
+  form.addEventListener('submit', (e) => {
+    e.preventDefault();
+
+    const newShout = {
+      user: usernameInput.value.trim(),
+      text: messageInput.value.trim(),
+      time: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })
+    };
+
+    if (!newShout.user || !newShout.text) return;
+
+    shouts.push(newShout);
+    localStorage.setItem('shouts', JSON.stringify(shouts));
+
+    messageInput.value = '';
+    renderShouts();
+  });
+
+  // Initial render on page load
+  renderShouts();
+</script>
+      </td>
+      <td valign="middle" align="left">
+      <ul>Education
+          <li>Van Arts - 2D Animation</li>
+          <li>Emily Carr - 2D Animation Character Designer</li>
+          <li>BCIT - 3D Game Programming</li>
+          <li>Earl Marriott Secondary School</li>
+          </ul>
+      <ul>Employment History
+          <li>The Now Newspaper</li>
+          <li>Background Acting - LJR Talent Agency</li>
+          <li>Background Acting - CTM International</li>
+          <li>The Source By Circuit City - Sales Associate</li>
+          <li>Blenz Coffee - Barista</li>
+          <li>Willow Bean Cafe - Barista</li>
+      </ul>
+      <ul>Skills
+          <li>Drawing</li>
+          <li>Writing (120 WPM)</li>
+          <li>Linux</li>
+          <li>Mac OS</li>
+          <li>Windows</li>
+          <li>Coding (like this website)</li>
+          <li>GitHub</li>
+      </ul>
+      <ul>Feats of Accomplishment
+            <li>Experienced Web Developer</li>
+            <li>Installed and used Red Hat Linux, Kali Linux, openSUSE, Debian, Linux Mint and Slackware</li>
+            <li>Ran a personal webserver using Apache and mySQL</li>
+            <li>Built powerful computers for family and friends</li>
+          </ul>
+
+
+
+      </td>
+      <td width="50%" valign="middle">
+<iframe width="560" height="315" src="https://www.youtube.com/embed/InhnUfErsIs?si=_KZ2HpxiS8zRS3Tl" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
+
+
+      </td>
+      <td valign="bottom" align="right">
+        Made With Linux ;-)<br><img src="MadeWithLinux.png" align="right" width="256" height="341"></td>
+    </tr>
+
+</table>
 
 
 </body>
